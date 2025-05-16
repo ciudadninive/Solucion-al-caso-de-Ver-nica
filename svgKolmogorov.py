@@ -1,7 +1,5 @@
 import matplotlib.pyplot as plt
-import numpy as np
 
-# Datos de la tabla proporcionada
 labels = [
     'Bajo_Pre', 'Bajo_Post', 'Medio_Pre', 'Medio_Post', 'Alto_Pre', 'Alto_Post',
     'Bajo_Pre2', 'Bajo_Post2', 'Medio_Pre2', 'Medio_Post2', 'Alto_Pre2', 'Alto_Post2'
@@ -14,7 +12,7 @@ colors = ['green' if p > 0.05 else 'red' for p in ks_values]
 fig, ax = plt.subplots(figsize=(12, 6))
 bars = ax.bar(labels, ks_values, color=colors)
 
-# Añadir etiquetas de valor encima de cada barra
+# Etiquetas de valor sobre cada barra
 for bar, value in zip(bars, ks_values):
     height = bar.get_height()
     ax.text(bar.get_x() + bar.get_width() / 2, height + 0.02, f'{value:.4f}', ha='center', va='bottom')
@@ -27,6 +25,5 @@ ax.legend()
 plt.xticks(rotation=45)
 plt.tight_layout()
 
-# Guardar gráfico en SVG
 plt.savefig('kolmogorov_smirnov_results.svg', format='svg')
 plt.show()
